@@ -4,7 +4,7 @@
 // 	protoc        v3.19.6
 // source: implant.proto
 
-package grpcapi 
+package __
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
