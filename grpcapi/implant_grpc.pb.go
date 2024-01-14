@@ -4,7 +4,7 @@
 // - protoc             v3.19.6
 // source: implant.proto
 
-package grpcapi 
+package __
 
 import (
 	context "context"
@@ -53,15 +53,14 @@ func (c *implantClient) SendOutput(ctx context.Context, in *Command, opts ...grp
 }
 
 // ImplantServer is the server API for Implant service.
-// All implementations must embed UnimplementedImplantServer
+// All implementations should embed UnimplementedImplantServer
 // for forward compatibility
 type ImplantServer interface {
 	FetchCommand(context.Context, *Empty) (*Command, error)
 	SendOutput(context.Context, *Command) (*Empty, error)
-	mustEmbedUnimplementedImplantServer()
 }
 
-// UnimplementedImplantServer must be embedded to have forward compatible implementations.
+// UnimplementedImplantServer should be embedded to have forward compatible implementations.
 type UnimplementedImplantServer struct {
 }
 
@@ -71,7 +70,6 @@ func (UnimplementedImplantServer) FetchCommand(context.Context, *Empty) (*Comman
 func (UnimplementedImplantServer) SendOutput(context.Context, *Command) (*Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendOutput not implemented")
 }
-func (UnimplementedImplantServer) mustEmbedUnimplementedImplantServer() {}
 
 // UnsafeImplantServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to ImplantServer will
@@ -165,21 +163,19 @@ func (c *adminClient) RunCommand(ctx context.Context, in *Command, opts ...grpc.
 }
 
 // AdminServer is the server API for Admin service.
-// All implementations must embed UnimplementedAdminServer
+// All implementations should embed UnimplementedAdminServer
 // for forward compatibility
 type AdminServer interface {
 	RunCommand(context.Context, *Command) (*Command, error)
-	mustEmbedUnimplementedAdminServer()
 }
 
-// UnimplementedAdminServer must be embedded to have forward compatible implementations.
+// UnimplementedAdminServer should be embedded to have forward compatible implementations.
 type UnimplementedAdminServer struct {
 }
 
 func (UnimplementedAdminServer) RunCommand(context.Context, *Command) (*Command, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunCommand not implemented")
 }
-func (UnimplementedAdminServer) mustEmbedUnimplementedAdminServer() {}
 
 // UnsafeAdminServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to AdminServer will
