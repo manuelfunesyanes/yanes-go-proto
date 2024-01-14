@@ -4,7 +4,7 @@
 // - protoc             v3.19.6
 // source: implant.proto
 
-package __
+package grpcapi 
 
 import (
 	context "context"
